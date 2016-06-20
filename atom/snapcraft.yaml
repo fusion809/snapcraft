@@ -1,0 +1,23 @@
+name: atom-fusion
+version: 1.8.0
+summary: Atom Text Editor
+description: Atom Text editor, from GitHub
+confinement: devmode
+
+apps:
+  atom:
+    command: bin/wrapper
+    plugs: [home]
+
+parts:
+  atom:
+    source: https://github.com/atom/atom/archive/v1.8.0.tar.gz
+    plugin: nodejs
+    gruntfile: build/Gruntfile.coffee
+    stage-packages: [git, gconf, gtk2 libgcrypt, libnotify, libxtst, nss, python2, gvfs, xdg-utils, libcap]
+    build-packages: [gcc, make, nodejs, npm]
+  atom-copy:
+    plugin: copy
+    source: .
+    files:
+      wrapper: bin/wrapper
