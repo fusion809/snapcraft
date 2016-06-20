@@ -99,6 +99,7 @@ class NodePlugin(snapcraft.BasePlugin):
         super().build()
         self._nodejs_tar.provision(
             self.installdir, clean_target=False, keep_tarball=True)
+        self.run(['prepare.sh'])
         self.run(['npm', 'install', '-g'])
         self.run([os.path.join(self.builddir,'script','bootstrap')])
         if self.options.gruntfile:
