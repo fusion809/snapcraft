@@ -12,4 +12,4 @@ WORKDIR /atom-fusion
 
 RUN snapcraft
 
-COPY /atom-fusion/atom_1.8.0_amd64.snap .
+COPY /atom-fusion/atom_fusion_1.8.0_amd64.snap .

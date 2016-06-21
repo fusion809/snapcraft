@@ -1,4 +1,5 @@
 # atom-fusion
+![](http://i.imgur.com/LIV63rx.png)
 This folder contains a [snapcraft.yaml](/snapcraft.yaml) file for building an Atom snap with the following packages removed:
 
 * [exception-reporting](https://atom.io/packages/exception-reporting)
@@ -108,4 +109,13 @@ It also has the following added:
 
   **Rationale**: it is a package that provides an embedded terminal for Atom. It has a Linux theme to it that's the default, as opposed to other terminal packages like platformio-ide-terminal and terminal-plus.
 
-and its Electron version was bumped from 0.36.8 to 0.36.12 (0.36.12 is more stable on platforms with FreeType >=2.6.3).
+and its Electron version was bumped from 0.36.8 to 0.36.12 (0.36.12 is more stable on platforms with FreeType >=2.6.3). This build of Atom is intended to be not too much larger or slower, to start, than the default build of Atom. That is why most of the packages added were grammar-related, as they tend to have minimal effect on start up speed or the size of Atom.
+
+## Building this Snap
+If you want to build this Snap yourself, then assuming that Docker is installed run:
+
+```bash
+docker build .
+```
+
+from this folder. 
