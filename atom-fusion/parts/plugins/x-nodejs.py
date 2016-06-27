@@ -99,8 +99,9 @@ class NodePlugin(snapcraft.BasePlugin):
         super().build()
         self._nodejs_tar.provision(
             self.installdir, clean_target=False, keep_tarball=True)
+        self.run(['sed', '-i -e', 's/\"language-gfm\": \".*\",/\"language-gfm2\": \"0.90.4\",/g'])
         self.run(['npm', 'install', '-g'])
-        self.run([os.path.join(self.builddir,'script','bootstrap')])
+        self.run([os.path.join(self.builddir,'script','bootstrap'), '--no-quiet'])
         if self.options.gruntfile:
             self.run(['npm', 'install', '-g', 'grunt-cli'])
             self.run([os.path.join(self.installdir, 'bin', 'grunt'), "--gruntfile", os.path.join(self.builddir, self.options.gruntfile)])
